@@ -1,0 +1,21 @@
+steps:
+  # Step 1: Checkout the source code from the repository
+  - name: "gcr.io/cloud-builders/git"
+    args: ["clone", "https://github.com/FFSiyam/cloudbuild.git"]
+    dir: "/"
+
+  # Step 2: Build your HTML project (if required)
+  # Replace these commands with your build steps if needed
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install"]
+    dir: "/"
+
+  # Step 3: Deploy the HTML project to a Compute Engine instance
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "compute"
+      - "scp"
+      - "--recurse"
+      - "--zone=us-central1-c"
+      - "/*"
+      - "cloud-build:/var/www/html"

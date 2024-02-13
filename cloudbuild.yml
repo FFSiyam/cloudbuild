@@ -6,9 +6,6 @@ steps:
 
   # Step 2: Build your HTML project (if required)
   # Replace these commands with your build steps if needed
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["install"]
-    dir: "/"
 
   # Step 3: Deploy the HTML project to a Compute Engine instance
   - name: "gcr.io/cloud-builders/gcloud"
